@@ -1,0 +1,66 @@
+{
+	"name": "@sveu/sveltekit-security",
+	"version": "0.1.0",
+	"packageManager": "pnpm@8.10.5",
+	"description": "A package that helps you secure your Sveltekit apps with ease. It provides you with tools and best practices to prevent common security risks and vulnerabilities.",
+	"author": "Mohamed Nesredin<https://github.com/svelte-u>",
+	"license": "MIT",
+	"homepage": "https://github.com/svelte-u/sveltekit-security#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/svelte-u/sveltekit-security.git"
+	},
+	"bugs": {
+		"url": "https://github.com/svelte-u/sveltekit-security/issues"
+	},
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"sveltekit-security",
+		"security",
+		"owasp"
+	],
+	"type": "module",
+	"scripts": {
+		"build": "pnpm run clean && tsup",
+		"clean": "tsx scripts/clean.ts",
+		"git:add": "pnpm run build && pnpm run clean && git add .",
+		"commit": "cz commit",
+		"lint": "eslint .",
+		"lint:fix": "pnpm run lint --fix",
+		"release": "bumpp"
+	},
+	"exports": {
+		".": {
+			"import": "./index.js",
+			"types": "./index.d.ts"
+		}
+	},
+	"peerDependencies": {
+		"svelte": "3.x || 4.x"
+	},
+	"devDependencies": {
+		"@sveltejs/kit": "^1.27.6",
+		"@types/fs-extra": "^11.0.4",
+		"@types/node": "^20.9.1",
+		"@typescript-eslint/eslint-plugin": "^6.7.5",
+		"@typescript-eslint/parser": "^6.7.5",
+		"bumpp": "^9.2.0",
+		"eslint": "^8.51.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-perfectionist": "^2.2.0",
+		"eslint-plugin-svelte": "^2.34.0",
+		"eslint-plugin-tsdoc": "^0.2.17",
+		"fast-glob": "^3.3.2",
+		"fs-extra": "^11.1.1",
+		"prettier": "^3.0.0",
+		"prettier-plugin-svelte": "^3.0.0",
+		"svelte": "^4.2.2",
+		"tsup": "^7.3.0",
+		"tsx": "^4.1.2",
+		"typescript": "^5.2.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

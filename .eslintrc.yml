@@ -1,0 +1,67 @@
+root: true
+extends:
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    - plugin:svelte/recommended
+    - plugin:svelte/prettier
+    - prettier
+parser: "@typescript-eslint/parser"
+plugins:
+    - "@typescript-eslint"
+    - eslint-plugin-tsdoc
+    - perfectionist
+ignorePatterns:
+    - "*.cjs"
+env:
+    browser: true
+    es2017: true
+    node: true
+overrides:
+    - files:
+          - "*.svelte"
+      parser: svelte-eslint-parser
+      parserOptions:
+          parser: "@typescript-eslint/parser"
+rules:
+    camelcase: off
+    tsdoc/syntax: warn
+    svelte/no-immutable-reactive-statements: error
+    svelte/no-dupe-on-directives: error
+    svelte/no-dupe-use-directives: error
+    svelte/no-reactive-reassign: error
+    svelte/require-store-callbacks-use-set-param: error
+    svelte/require-store-reactive-access: error
+    svelte/no-ignored-unsubscribe: error
+    perfectionist/sort-svelte-attributes:
+        - error
+        - type: natural
+          order: asc
+          groups:
+              - multiline
+              - unknown
+              - - shorthand
+                - svelte-shorthand
+    perfectionist/sort-imports:
+        - error
+        - type: natural
+          order: asc
+          newlines-between: always
+          custom-groups:
+              value:
+                  svelte:
+                      - svelte
+                      - "svelte/**"
+                  sveltekit: "@sveltejs/**"
+          groups:
+              - builtin
+              - svelte
+              - sveltekit
+              - external
+              - internal
+              - type
+          internal-pattern:
+              - "$i18n/**"
+              - "$hooks/**"
+              - "$components/**"
+              - "$assets/**"
+              - "./**"
